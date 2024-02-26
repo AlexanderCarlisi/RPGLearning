@@ -130,3 +130,34 @@ int Skill::damageToBaseDamage() {
         case Damage::Colossal : return 35;
     }
 }
+
+/** 
+ * Sets this Skill as a skill that Repeats.
+ * 
+ * @param random    :   Randomizes between min and max
+ * @param min       :   Minimum number to be Randomed to
+ * @param max       :   Maximum number to be Randomed to %default repeat time if random is false%
+*/
+void Skill::repeat(bool random, int min, int max) {
+    this->repeats = true;
+    this->randomRepeats = random;
+    this->minRepeat = min;
+    this->maxRepeat = max;
+}
+
+/**
+ * Sets this Skill as a skill that can inflict Ailments.
+ * 
+ * @param random    :   Makes it a chance to inflict Ailments.
+ * @param Ailment   :   Ailment to afflict.
+*/
+void Skill::inflict(bool random) { }
+
+/** Initialize Skills. */
+const Skill Skill::SKILLS[] = {
+    Skill("Slash", Element::Phys, Damage::Weak, 5),
+    Skill("Shot", Element::Gun, Damage::Weak, 5),
+    Skill("Flame", Element::Fire, Damage::Weak, 5),
+    Skill("Freeze", Element::Ice, Damage::Weak, 5),
+    Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10).repeat(true, 1, 2)
+};

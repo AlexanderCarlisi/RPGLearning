@@ -50,11 +50,20 @@ private:
     int minRepeat;
     int maxRepeat;
 
+    bool inflictAilment;
+    bool randomInflictAilment;
+    // Ailment ailmentToInflict
+
     /** Random Number Generator. */
     static std::mt19937 generator;
     
     int damageToBaseDamage();
     int getScaleStat(int strength, int magic);
+    void repeat(bool random, int min, int max);
+    void inflict(bool random /** Ailment ailment */);
+
+    /** List of Predefined Skills available to Personas. */
+    static const Skill SKILLS[];
 };
 
 

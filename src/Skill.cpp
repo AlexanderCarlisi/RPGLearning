@@ -126,7 +126,7 @@ int Skill::damageToBaseDamage() {
         case Damage::Medium : return 10;
         case Damage::Heavy : return 15;
         case Damage::Severe : return 20;
-        case Damage::Massive : return 24;
+        case Damage::Massive : return 23;
         case Damage::Colossal : return 25;
     }
 }

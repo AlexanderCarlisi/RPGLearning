@@ -17,7 +17,7 @@ Skill::Skill() : Skill("Blank", Element::Almighty, Damage::Weak, 0) { }
  * @param d         :   Enum Damage
  * @param Cost      :   Base Cost of the Skill
  * 
- */
+*/
 Skill::Skill(std::string Name, Element e, Damage d, int Cost) {
     this->name = Name;
     this->element = e;
@@ -32,7 +32,7 @@ Skill::Skill(std::string Name, Element e, Damage d, int Cost) {
  * @param e     :   Element to convert
  * @return Element as a String.
  * 
- */
+*/
 std::string Skill::elementToString(Element e) {
     switch(e) {
         case Element::Almighty : return "Almighty";
@@ -54,7 +54,7 @@ std::string Skill::elementToString(Element e) {
  * @param d     :   Damage to convert
  * @return Damage as a String.
  * 
- */
+*/
 std::string Skill::damageToString(Damage d) {
     switch(d) {
         case Damage::Weak : return "Weak";
@@ -73,7 +73,7 @@ std::string Skill::damageToString(Damage d) {
  * @param userStats     :   Integer pointer of the User of the Skills Stats
  * @return Calculated Damage as Integer.
  * 
- */
+*/
 int Skill::calculateDamage(int userLevel, int* userStats) {
     // Stat Declaration
     int scaleStat = getScaleStat(userStats[0], userStats[1]);
@@ -95,7 +95,7 @@ int Skill::calculateDamage(int userLevel, int* userStats) {
  * @param userStats     :   Integer pointer of the User of the Skills stats.
  * @return Calculated Skill Cost as an Integer.
  * 
- */
+*/
 int Skill::calculateCost(int userLevel, int* userStats) {
     int scaleStat = getScaleStat(userStats[0], userStats[1]);
     return (userLevel * scaleStat) / this->cost;
@@ -108,7 +108,7 @@ int Skill::calculateCost(int userLevel, int* userStats) {
  * @param magic         :   Magic stat of the Skill User
  * @return Strength stat if Physical Skill, and Magic stat if Magical Skill.
  * 
- */
+*/
 int Skill::getScaleStat(int strength, int magic) {
     // Physical Skills scales off Strength, Magical Skills scales off Magic.
     return (this->element == Element::Phys || this->element == Element::Gun) ? strength : magic;
@@ -119,7 +119,7 @@ int Skill::getScaleStat(int strength, int magic) {
  * 
  * @return Integer baseDamage.
  * 
- */
+*/
 int Skill::damageToBaseDamage() {
     switch(this->damage) {
         case Damage::Weak : return 10;

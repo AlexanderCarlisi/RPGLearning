@@ -13,7 +13,7 @@ Unit::Unit() : Unit("Blank", 1, 1, Persona()) { }
  * @param Mana      :   Max/Current Mana
  * @param P         :   Persona
  * 
- */
+*/
 Unit::Unit(std::string Name, int Health, int Mana, Persona P) {
     this->name = Name;
     this->health = Health;

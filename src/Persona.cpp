@@ -15,7 +15,7 @@ Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1) { }
  * @param a     :   Agility Stat
  * @param l     :   Luck Stat
  * 
- */
+*/
 Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l) {
     this->name = n;
     this->level = lvl;
@@ -31,7 +31,7 @@ Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l) {
  * 
  * @return an ordered array of this Persona's stats.
  * 
- */
+*/
 int* Persona::getStatsAsArray() {
     int* arr = new int[5];
     arr[0] = this->strength;

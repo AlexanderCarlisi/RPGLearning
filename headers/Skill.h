@@ -28,6 +28,18 @@ public:
         Colossal
     };
 
+    enum Ailment {
+        None,
+        Burn,
+        Freeze,
+        Shock,
+        Bleed,
+        Silence,
+        Poison,
+        Fear,
+        Charm
+    };
+
     std::string name;
     Element element;
     Damage damage;
@@ -51,8 +63,8 @@ private:
     int maxRepeat;
 
     bool inflictAilment;
-    bool randomInflictAilment;
-    // Ailment ailmentToInflict
+    int inflictAilmentChance;
+    Ailment ailmentToInflict;
 
     /** Random Number Generator. */
     static std::mt19937 generator;
@@ -60,7 +72,7 @@ private:
     int damageToBaseDamage();
     int getScaleStat(int strength, int magic);
     void repeat(bool random, int min, int max);
-    void inflict(bool random /** Ailment ailment */);
+    void inflict(int chance, Ailment ailment);
 
     /** List of Predefined Skills available to Personas. */
     static const Skill SKILLS[];

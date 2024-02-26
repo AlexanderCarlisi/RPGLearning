@@ -148,10 +148,14 @@ void Skill::repeat(bool random, int min, int max) {
 /**
  * Sets this Skill as a skill that can inflict Ailments.
  * 
- * @param random    :   Makes it a chance to inflict Ailments.
+ * @param chance    :   Chance 0-100 to inflict Ailment
  * @param Ailment   :   Ailment to afflict.
 */
-void Skill::inflict(bool random) { }
+void Skill::inflict(int chance, Ailment ailment) {
+    this->inflictAilment = true;
+    this->inflictAilmentChance = chance;
+    this->ailmentToInflict = ailment;
+}
 
 /** Initialize Skills. */
 const Skill Skill::SKILLS[] = {

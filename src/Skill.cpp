@@ -122,12 +122,12 @@ int Skill::getScaleStat(int strength, int magic) {
 */
 int Skill::damageToBaseDamage() {
     switch(this->damage) {
-        case Damage::Weak : return 10;
-        case Damage::Medium : return 15;
-        case Damage::Heavy : return 20;
-        case Damage::Severe : return 27;
-        case Damage::Massive : return 32;
-        case Damage::Colossal : return 35;
+        case Damage::Weak : return 5;
+        case Damage::Medium : return 10;
+        case Damage::Heavy : return 15;
+        case Damage::Severe : return 20;
+        case Damage::Massive : return 24;
+        case Damage::Colossal : return 25;
     }
 }
 

@@ -161,7 +161,8 @@ void Skill::inflict(int chance, Ailment ailment) {
 const Skill Skill::SKILLS[] = {
     Skill("Slash", Element::Phys, Damage::Weak, 5),
     Skill("Shot", Element::Gun, Damage::Weak, 5),
-    Skill("Flame", Element::Fire, Damage::Weak, 5),
-    Skill("Freeze", Element::Ice, Damage::Weak, 5),
-    Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10).repeat(true, 1, 2)
+    Skill("Flame", Element::Fire, Damage::Weak, 5).inflict(10, Ailment::Burn),
+    Skill("Freeze", Element::Ice, Damage::Weak, 5).inflict(10, Ailment::Freeze),
+    Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10).repeat(true, 1, 2),
+    Skill("Lightning", Element::Elec, Damage::Weak, 5).inflict(10, Ailment::Shock)
 };

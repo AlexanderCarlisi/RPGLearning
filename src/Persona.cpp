@@ -1,9 +1,11 @@
 #include "../headers/Persona.h"
 #include <string>
 
+#include <iostream>
+
 
 /** Default Constructor. */
-Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1, { }) { }
+Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1, { }, 0) { }
 
 /**
  * Construct the Persona Class.
@@ -17,7 +19,7 @@ Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1, { }) { }
  * @param Skills :   Skill Pointer Array
  * 
 */
-Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill const* Skills[]) {
+Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill const* Skills[], int size) {
     this->name = n;
     this->level = lvl;
     this->strength = s;
@@ -25,7 +27,7 @@ Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skil
     this->endurence = e;
     this->agility = a;
     this->luck = l;
-    assignSkills(Skills);
+    assignSkills(Skills, size);
 }
 
 /**
@@ -49,10 +51,11 @@ int* Persona::getStatsAsArray() {
  * Set this Persona's skill array to the parameters.
  * 
  * @param Skills        :   Pointer Array to set to.
- * 
 */
-void Persona::assignSkills(Skill const* Skills[]) {
-    for (int i = 0; i < 6; i++) {
-        this->skills[i] = Skills[i];
+void Persona::assignSkills(Skill const* Skills[], int size) {
+    if (size <= 0) return;
+    for (int i = 0; i < size; i++) {
+        if (Skills[i] != nullptr)
+            this->skills[i] = Skills[i];
     }
 }

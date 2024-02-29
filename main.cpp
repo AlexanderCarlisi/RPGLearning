@@ -8,7 +8,7 @@
 int main() {
 
   Skill const* skills[] = {Skill::getSkill(0), Skill::getSkill(1)};
-  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5, skills));
+  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5, skills, sizeof(skills) / sizeof(skills[0])));
 
   std::cout << "\n\n\n" << unit.persona.name << std::endl;
 

@@ -24,13 +24,13 @@ public:
     Skill const* skills[6];
 
     Persona();
-    Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill const* Skills[]);
+    Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill const* Skills[], int size);
     int* getStatsAsArray();
 
 
 private:
 
-    void assignSkills(Skill const* Skills[]);
+    void assignSkills(Skill const* Skills[], int size);
 
 };
 

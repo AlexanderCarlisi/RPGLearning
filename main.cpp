@@ -5,7 +5,9 @@
 #include "src/Persona.cpp"
 
 int main() {
-  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5, {}));
+
+  Skill const* skills[] = {Skill::getSkill(0), Skill::getSkill(1)};
+  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5, skills));
 
   std::cout << "\n\n\n" << unit.persona.name << std::endl;
 
@@ -14,6 +16,8 @@ int main() {
     std::cout << stats[i] << std::endl;
   }
   delete[] stats;
+
+  std::cout << "\n\n\n" << unit.persona.skills[0]->name;
 
   return 0;
 }

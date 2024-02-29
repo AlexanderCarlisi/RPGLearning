@@ -49,9 +49,9 @@ public:
 
     static std::string elementToString(Element e);
     static std::string damageToString(Damage d);
+    static Skill const* getSkill(int id);
     int calculateDamage(int userLevel, int* userStats);
     int calculateCost(int userLevel, int* userStats);
-    static Skill* getSkill(std::string Name);
 
     /** List of Predefined Skills available to Personas. */
     static const Skill SKILLS[];

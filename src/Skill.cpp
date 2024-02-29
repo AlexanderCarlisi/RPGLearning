@@ -167,6 +167,6 @@ const Skill Skill::SKILLS[] = {
  * @param id    :   Index of the Desired Skill.
  * @return Skill Pointer of the Element.
 */
-Skill* getSkill(int id) {
+Skill const* Skill::getSkill(int id) {
     return &Skill::SKILLS[id];
 }

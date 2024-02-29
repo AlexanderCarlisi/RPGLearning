@@ -2,9 +2,6 @@
 #include <string>
 
 
-/** Amount of Skills each Persona can have. */
-const int Persona::SKILLS_AMOUNT = 6;
-
 /** Default Constructor. */
 Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1, { }) { }
 
@@ -20,7 +17,7 @@ Persona::Persona() : Persona("Blank", 1, 1, 1, 1, 1, 1, { }) { }
  * @param Skills :   Skill Pointer Array
  * 
 */
-Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill* Skills[]) {
+Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skill const* Skills[]) {
     this->name = n;
     this->level = lvl;
     this->strength = s;
@@ -29,11 +26,6 @@ Persona::Persona(std::string n, int lvl, int s, int m, int e, int a, int l, Skil
     this->agility = a;
     this->luck = l;
     assignSkills(Skills);
-}
-
-/** Deconstructor. Free Up Allocated Memory. */
-Persona::~Persona() {
-    delete[] skills;
 }
 
 /**
@@ -59,8 +51,8 @@ int* Persona::getStatsAsArray() {
  * @param Skills        :   Pointer Array to set to.
  * 
 */
-void Persona::assignSkills(Skill* Skills[]) {
-    for (int i = 0; i < SKILLS_AMOUNT; i++) {
+void Persona::assignSkills(Skill const* Skills[]) {
+    for (int i = 0; i < 6; i++) {
         this->skills[i] = Skills[i];
     }
 }

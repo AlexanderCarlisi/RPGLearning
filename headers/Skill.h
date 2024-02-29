@@ -46,6 +46,7 @@ public:
 
     Skill();
     Skill(std::string Name, Element e, Damage d, int Cost);
+    Skill(std::string Name, Element e, Damage d, int Cost, bool repeatRandom, int repeatMin, int repeatMax);
 
     static std::string elementToString(Element e);
     static std::string damageToString(Damage d);
@@ -77,6 +78,7 @@ private:
     int getScaleStat(int strength, int magic);
     void repeat(bool random, int min, int max);
     void inflict(int chance, Ailment ailment);
+    static Ailment elementToAilment(Element e);
 };
 
 

@@ -23,6 +23,22 @@ Skill::Skill(std::string Name, Element e, Damage d, int Cost) {
     this->damage = d;
     this->cost = Cost;
     this->baseDamage = damageToBaseDamage();
+
+    inflict(10, elementToAilment(this->element));
+}
+/**
+ * Constructs the Skill Class.
+ * 
+ * @param Name      :   Name of the Skill
+ * @param e         :   Enum Element
+ * @param d         :   Enum Damage
+ * @param Cost      :   Base Cost of the Skill
+ * @param repeatRandom  :  If the repeat should Vary. 
+ * @param repeatMin     :   Minimum amount of variance
+ * @param repeatMax     :   Maximum amount of variance (defualt repeat if repeatRandom is false)
+*/
+Skill::Skill(std::string Name, Element e, Damage d, int Cost, bool repeatRandom, int repeatMin, int repeatMax) : Skill(Name, e, d, Cost) {
+    repeat(repeatRandom, repeatMin, repeatMax);
 }
 
 /**
@@ -60,6 +76,27 @@ std::string Skill::damageToString(Damage d) {
         case Damage::Severe : return "Severe";
         case Damage::Massive : return "Massive";
         case Damage::Colossal : return "Colossal";
+        default : return "Weak";
+    }
+}
+
+/**
+ * Converts Elements to their Coresponding Ailment.
+ * 
+ * @param e     :   Element to convert
+ * @return Ailment
+*/
+Skill::Ailment Skill::elementToAilment(Element e) {
+    switch(e) {
+        case Element::Phys : return Ailment::Bleed;
+        case Element::Gun : return Ailment::Bleed;
+        case Element::Fire : return Ailment::Burn;
+        case Element::Ice : return Ailment::Freeze;
+        case Element::Wind : return Ailment::Bleed;
+        case Element::Elec : return Ailment::Shock;
+        case Element::Dark : return Ailment::None;
+        case Element::Light : return Ailment::None;
+        default : return Ailment::None;
     }
 }
 
@@ -155,10 +192,10 @@ void Skill::inflict(int chance, Ailment ailment) {
 const Skill Skill::SKILLS[] = {
     Skill("Slash", Element::Phys, Damage::Weak, 5),
     Skill("Shot", Element::Gun, Damage::Weak, 5),
-    Skill("Flame", Element::Fire, Damage::Weak, 5).inflict(10, Ailment::Burn),
-    Skill("Freeze", Element::Ice, Damage::Weak, 5).inflict(10, Ailment::Freeze),
-    Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10).repeat(true, 1, 2),
-    Skill("Lightning", Element::Elec, Damage::Weak, 5).inflict(10, Ailment::Shock)
+    Skill("Flame", Element::Fire, Damage::Weak, 5),
+    Skill("Freeze", Element::Ice, Damage::Weak, 5),
+    Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10),
+    Skill("Lightning", Element::Elec, Damage::Weak, 5)
 };
 
 /**

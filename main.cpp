@@ -2,6 +2,7 @@
 #include <string>
 
 #include "src/Unit.cpp"
+#include "src/Skill.cpp"
 #include "src/Persona.cpp"
 
 int main() {

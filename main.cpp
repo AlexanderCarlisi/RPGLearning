@@ -5,7 +5,7 @@
 #include "src/Persona.cpp"
 
 int main() {
-  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5));
+  Unit unit = Unit("Name", 10, 5, Persona("PersonaName", 10, 1, 2, 3, 4, 5, {}));
 
   std::cout << "\n\n\n" << unit.persona.name << std::endl;
 

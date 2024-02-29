@@ -16,7 +16,6 @@ Skill::Skill() : Skill("Blank", Element::Almighty, Damage::Weak, 0) { }
  * @param e         :   Enum Element
  * @param d         :   Enum Damage
  * @param Cost      :   Base Cost of the Skill
- * 
 */
 Skill::Skill(std::string Name, Element e, Damage d, int Cost) {
     this->name = Name;
@@ -31,7 +30,6 @@ Skill::Skill(std::string Name, Element e, Damage d, int Cost) {
  * 
  * @param e     :   Element to convert
  * @return Element as a String.
- * 
 */
 std::string Skill::elementToString(Element e) {
     switch(e) {
@@ -53,7 +51,6 @@ std::string Skill::elementToString(Element e) {
  * 
  * @param d     :   Damage to convert
  * @return Damage as a String.
- * 
 */
 std::string Skill::damageToString(Damage d) {
     switch(d) {
@@ -72,7 +69,6 @@ std::string Skill::damageToString(Damage d) {
  * @param userLevel     :   Level of the Skill User
  * @param userStats     :   Integer pointer of the User of the Skills Stats
  * @return Calculated Damage as Integer.
- * 
 */
 int Skill::calculateDamage(int userLevel, int* userStats) {
     // Stat Declaration
@@ -94,7 +90,6 @@ int Skill::calculateDamage(int userLevel, int* userStats) {
  * @param userLevel     :   Level of the Skill User
  * @param userStats     :   Integer pointer of the User of the Skills stats.
  * @return Calculated Skill Cost as an Integer.
- * 
 */
 int Skill::calculateCost(int userLevel, int* userStats) {
     int scaleStat = getScaleStat(userStats[0], userStats[1]);
@@ -107,7 +102,6 @@ int Skill::calculateCost(int userLevel, int* userStats) {
  * @param strength      :   Strength stat of the Skill User
  * @param magic         :   Magic stat of the Skill User
  * @return Strength stat if Physical Skill, and Magic stat if Magical Skill.
- * 
 */
 int Skill::getScaleStat(int strength, int magic) {
     // Physical Skills scales off Strength, Magical Skills scales off Magic.
@@ -118,7 +112,6 @@ int Skill::getScaleStat(int strength, int magic) {
  * Get baseDamage based on Damage enum of this Skill.
  * 
  * @return Integer baseDamage.
- * 
 */
 int Skill::damageToBaseDamage() {
     switch(this->damage) {
@@ -157,6 +150,7 @@ void Skill::inflict(int chance, Ailment ailment) {
     this->ailmentToInflict = ailment;
 }
 
+
 /** Initialize Skills. */
 const Skill Skill::SKILLS[] = {
     Skill("Slash", Element::Phys, Damage::Weak, 5),
@@ -166,3 +160,13 @@ const Skill Skill::SKILLS[] = {
     Skill("Myriad Slashes", Element::Phys, Damage::Medium, 10).repeat(true, 1, 2),
     Skill("Lightning", Element::Elec, Damage::Weak, 5).inflict(10, Ailment::Shock)
 };
+
+/**
+ * Get the Pointer to a Skill.
+ * 
+ * @param id    :   Index of the Desired Skill.
+ * @return Skill Pointer of the Element.
+*/
+Skill* getSkill(int id) {
+    return &Skill::SKILLS[id];
+}

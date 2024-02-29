@@ -51,6 +51,10 @@ public:
     static std::string damageToString(Damage d);
     int calculateDamage(int userLevel, int* userStats);
     int calculateCost(int userLevel, int* userStats);
+    static Skill* getSkill(std::string Name);
+
+    /** List of Predefined Skills available to Personas. */
+    static const Skill SKILLS[];
 
 
 private:
@@ -73,9 +77,6 @@ private:
     int getScaleStat(int strength, int magic);
     void repeat(bool random, int min, int max);
     void inflict(int chance, Ailment ailment);
-
-    /** List of Predefined Skills available to Personas. */
-    static const Skill SKILLS[];
 };
 
 
